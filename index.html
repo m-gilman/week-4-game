@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Crystal Collector Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Bungee Inline" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body class="container">
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">Melissa Gilman</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="fluid-container gameTitle">
+            <h1 class="row-md-2 text-center">Crystal Collector </h1>
+        </div>
+
+        <div class="px-1 instructions text-justify">
+            <p class="mt-1 mb-0"><u>INSTRUCTIONS:</u> You will be given a "goal" number at the start of the game.
+            There are four crystals below. Clicking on a crystal adds a specific number of points to your total score.
+            You win the game by matching your total score to a random number. You lose the game if your total score goes above the random number.
+            The value of each crystal is hidden from you until you click on it.
+            Each time the game starts, the value of each crystal will also change.</p>
+        </div>
+        <!-- CRYSTALS -->
+        <div class="container" id="crystalWrapper">
+            <div class="row">
+            <!-- pinkDiamond -->
+                <div class="col-md-3 col-sm-6 crystal">
+                    <img class="img-fluid" src="./assets/images/pinkDiamondTranspar.png" alt="Pink Diamond">
+                </div>
+            <!-- tealGem -->
+                <div class="col-md-3 col-sm-6 crystal">
+                    <img class="img-fluid" src="./assets/images/tealGemTranspar.png" alt="Teal Gem">
+                </div>
+            <!-- purpleCrystal     -->
+                <div class="col-md-3 col-sm-6 crystal">
+                    <img class="img-fluid" src="./assets/images/purpleCrystalTranspar.png" alt="Purple Crystal">
+                </div>
+            <!-- pinkGem -->
+                <div class="col-md-3 col-sm-6 crystal">
+                    <img class="img-fluid" src="./assets/images/pinkGemTranspar.png" alt="Pink Gem">
+                </div>
+                
+            </div> <!-- /row -->
+        </div>
+
+        <div id="score" class="container">
+            <p><h4>Your Score:</p>  
+            
+        </div>
+        
+
+        <div id="goal">
+            <p><h4>Your Goal: 0</h4></p>
+            <p><h4>#</p>
+            <p><h4>Points</p>
+
+        </div>        
+
+        <div id="winsAndLosses">
+            <p><h4>Wins: 0</h4></p>
+            <p><h4>Losses: 0</h4></p>
+        </div>    
+        <div class="container">
+            <div class="row" id="winsAndLosses">
+                <p><h4>!</h4></p>
+            </div>
+
+        </div>    
+
+        <div class="container">
+            <div id="playAgain" class="row ">
+                <button class="column againButton btn btn-info " button type="button">
+                Play Again
+                </button>
+            </div>
+        </div>
+        <div class="footer">
+        <p class="credit">images of stones: 
+                <a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by Freepik</a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+  </body>
+</html>
+
+
+
