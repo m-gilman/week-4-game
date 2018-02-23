@@ -7,10 +7,10 @@
   <title>Crystal Collector Game</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto|Bungee Inline" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Germania+One|Kavivanar|Dancing+Script" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body class="container">
+<body>
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="#">Melissa Gilman</a>
@@ -31,81 +31,112 @@
             </ul>
         </div>
     </nav>
+    <!-- MAIN CONTAINER... Everything except nav and header will be inside this container -->
     <div class="container">
-        <div class="fluid-container gameTitle">
-            <h1 class="row-md-2 text-center">Crystal Collector </h1>
+        <!-- TITLE -->
+        <div class="row-md-2 gameTitle text-center">
+            <h1>Crystal Collector </h1>
         </div>
-
-        <div class="px-1 instructions text-justify">
-            <p class="mt-1 mb-0"><u>INSTRUCTIONS:</u> You will be given a "goal" number at the start of the game.
-            There are four crystals below. Clicking on a crystal adds a specific number of points to your total score.
-            You win the game by matching your total score to a random number. You lose the game if your total score goes above the random number.
-            The value of each crystal is hidden from you until you click on it.
-            Each time the game starts, the value of each crystal will also change.</p>
-        </div>
-        <!-- CRYSTALS -->
-        <div class="container" id="crystalWrapper">
-            <div class="row">
-            <!-- pinkDiamond -->
-                <div class="col-md-3 col-sm-6 crystal">
-                    <img class="img-fluid" src="./assets/images/pinkDiamondTranspar.png" alt="Pink Diamond">
-                </div>
-            <!-- tealGem -->
-                <div class="col-md-3 col-sm-6 crystal">
-                    <img class="img-fluid" src="./assets/images/tealGemTranspar.png" alt="Teal Gem">
-                </div>
-            <!-- purpleCrystal     -->
-                <div class="col-md-3 col-sm-6 crystal">
-                    <img class="img-fluid" src="./assets/images/purpleCrystalTranspar.png" alt="Purple Crystal">
-                </div>
-            <!-- pinkGem -->
-                <div class="col-md-3 col-sm-6 crystal">
-                    <img class="img-fluid" src="./assets/images/pinkGemTranspar.png" alt="Pink Gem">
-                </div>
-                
-            </div> <!-- /row -->
-        </div>
-
-        <div id="score" class="container">
-            <p><h4>Your Score:</p>  
-            
-        </div>
-        
-
-        <div id="goal">
-            <p><h4>Your Goal: 0</h4></p>
-            <p><h4>#</p>
-            <p><h4>Points</p>
-
-        </div>        
-
-        <div id="winsAndLosses">
-            <p><h4>Wins: 0</h4></p>
-            <p><h4>Losses: 0</h4></p>
-        </div>    
-        <div class="container">
-            <div class="row" id="winsAndLosses">
-                <p><h4>!</h4></p>
-            </div>
-
-        </div>    
-
-        <div class="container">
-            <div id="playAgain" class="row ">
-                <button class="column againButton btn btn-info " button type="button">
-                Play Again
-                </button>
-            </div>
-        </div>
-        <div class="footer">
-        <p class="credit">images of stones: 
-                <a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by Freepik</a>
+        <!-- INSTRUCTIONS ... with collapse option -->
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Show/Hide <u>Instructions:</u>
+        </button>
+        <div class="row-md-2 px-1 transarantBg text-center collapse" id="collapseExample">
+            <p class="mt-1 mb-0"><u>INSTRUCTIONS:</u> Each Crystal has a secret value! 
+            <br>Click on a Crystal to discover its value and add the value to <strong class="emphasize">Your Score</strong>.
+            <br>To win the game, Match <strong class="emphasize">Your Score</strong> to <strong class="emphasize">Your Goal</strong>. If <strong class="emphasize">Your Score</strong> goes above <strong class="emphasize">Your Goal</strong>, you lose.
+            <br>Each time the game starts, the value of the crystals will also change.
             </p>
         </div>
-    </div>
-    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+        
+        <!-- CRYSTALS -->
+        <!-- audio file for clicking on crystals  -->
+        <audio id="crystalButtonClick">
+            <source src="./assets/audio/TinyButtonPush.m4a">
+            Your browser does not support this audio.
+        </audio>
+        <div class="container text-center crystalWrapper">
+            <div class="row">
+            <!-- pinkDiamond = gem1-->
+                <div class="col-md-3 col crystal" id="crystal">
+                    <img class="img-fluid crystal-image" id="pinkImg1" src="./assets/images/pinkDiamondTranspar.png" alt="Pink Diamond">
+                </div>
+            <!-- tealGem gem2-->
+                <div class="col-md-3 col crystal" id="crystal">
+                    <img class="img-fluid crystal-image" id="tealImg" src="./assets/images/tealGemTranspar.png" alt="Teal Gem">
+                </div>
+            <!-- purpleCrystal gem3-->
+                <div class="col-md-3 col crystal" id="crystal">
+                    <img class="img-fluid crystal-image" id="purpleImg" src="./assets/images/purpleCrystalTranspar.png" alt="Purple Crystal">
+                </div>
+            <!-- pinkGem gem4-->
+                <div class="col-md-3 col crystal" id="crystal">
+                    <img class="img-fluid crystal-image" id="pinkImg2" src="./assets/images/pinkGemTranspar.png" alt="Pink Gem">
+                </div>
+            </div> <!-- /Crystal Wrapper Row -->
+        </div> <!-- /Crystal Wrapper container -->
+
+        <!-- Your Stats Section -->
+        <div class="container kavivanar">
+            <div class="row transarantBg mt-2 text-center">
+                <div class="col-12 col-md-4 border">
+                    <h4>Your Score:</h4>
+                    <div class="display-1"id="displayScore"></div>
+                </div>
+                <div class="col-12 col-md-4 border">
+                    <h4>Your Goal:</h4>
+                    <div class="display-1" id="displayGoal"></div>
+                </div>
+                <div class="col-12 col-md-4 border">
+                    <h4>Your Have:</h4>
+                    <div class="h1">Wins: <span id="displayWins"></span></div>
+                    <div class="h1">Losses: <span id="displayLosses"></span></div>
+                </div>
+            </div> <!-- /stats row -->
+        </div><!-- /stats container -->
+        
+        <!-- WIN/LOSE MESSAGE to User -->
+        <div class="container">
+            <div class="row mt-2 pt-2 justify-content-center dancingScript"> 
+                <div class="col-4  text-center">
+                    <!-- <h1 class="transarantBg p-1 border">You Won!</h1> -->
+                </div>
+            </div> <!--END of Win/Lose Status  -->
+
+            <!-- START... AGAIN BUTTON -->
+            <audio id="resetButtonClick">
+                <source src="./assets/audio/iceCubes.m4a">
+                Your browser does not support this audio.
+            </audio>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button class="column againButton btn btn-info mt-2 mb-5" type="reset">
+                    Play Again
+                    </button>
+                </div>
+            </div> <!--END of Play Again Button  -->
+        </div> <!--/END of WIN/LOSE & PLAY AGAIN container -->
+    
+    </div><!-- /END OF MAIN CONTAINER... Everything except nav and header will be inside this container -->
+
+    <footer class="p-2">
+        <div class="text-center mb-3">
+            &copy; Copyright 2018 Melissa Gilman
+        </div>        
+        <p class="credit text-right">Credit images of crystals: 
+            <a href="https://www.freepik.com/free-photos-vectors/design" target="_blank">Design vector created by Freepik</a>, 
+        <span>  Credit audio clips: </span>
+            <a href="https://www.soundbible.com" target="_blank">Audio Clips created by soundbible.com</a>
+        </p>
+    </footer>
+
+    
+    <script src="./assets/javascript/game.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-
