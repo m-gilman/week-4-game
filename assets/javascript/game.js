@@ -14,8 +14,7 @@ $(document).ready(function () {
         iceAudio.play();
     });
 
-    //GAME VARIABLES
-    
+//GAME VARIABLES
     var yourScore = 0;
     var yourWins = 0;
     var yourLosses = 0;
@@ -23,48 +22,58 @@ $(document).ready(function () {
     // The Number that the user is shooting for... A.K.A. "Your Goal". It Should be should be between 19 - 120
     var targetNumber = Math.floor(Math.random ()*(102)+19);
     //Random numbers for each crystal. Number should be between 1 - 12
-    var gem1 = Math.floor(Math.random ()*12)+1;
-    var gem2 = Math.floor(Math.random ()*12)+1;
-    var gem3 = Math.floor(Math.random ()*12)+1;
-    var gem4 = Math.floor(Math.random ()*12)+1;
-    var crystalValue = 0;
+    var gem1 = Math.floor(Math.random ()*12)+1;    //PINK GEM
+    var gem2 = Math.floor(Math.random ()*12)+1;    //TEAL GEM
+    var gem3 = Math.floor(Math.random ()*12)+1;    //PURPLE GEM
+    var gem4 = Math.floor(Math.random ()*12)+1;    //BLUE GEM
+    
 
-    console.log("gem1 =" + gem1);
-    console.log("gem2 =" + gem2);
-    console.log('gem3 =' + gem3);
-    console.log('gem4 =' + gem4);
-    console.log('crystalValue =' + crystalValue);
+    console.log("Pink=" + gem1 + "   Teal=" + gem2 + "   Purple=" + gem3 + "   Blue=" + gem4);
+    
+
+    // FUNCTIONS
+
+    // Inserts new score into HTML at location of #displayScore
+    function editYourScore () {
+        $("#displayScore").text(yourScore);
+    }
+
+    // function whatsTheScore () {}
+    if (yourScore === targetNumber) {
+        yourWins ++;
+    } else if (yourScore > targetNumber) {
+        yourLosses ++;
+    }  
+    // else {
+    //     yourScore =+ crystalValue;
+    //     // i don't have a crystalValue yet
+    // }
 
 
-    var ChangeYourScore = $("#displayScore").text(yourScore);
+
+    // Fill in stats at the start of the game
+    editYourScore ();  //calling the function I created earlier to do this
     $("#displayGoal").text(targetNumber);
     $("#displayWins").text(yourWins);
     $("#displayLosses").text(yourLosses);
 
-    if (yourScore === targetNumber) {
-        return yourWins ++;
-    } else if (yourScore > targetNumber) {
-        return yourLosses ++;
-    // If it's not greater than or equal to, it is less than.
-    } else {
-        return yourScore =+ crystalValue;
-    };
 
-    $(".crystalWrapper").on("click", "#pinkImg1", function(){
+
+    $(".crystalWrapper").on("click", "#pinkImg", function(){
         yourScore += gem1;
-        ChangeYourScore.text(yourScore);
+        editYourScore();
         
     }).on("click", "#tealImg", function () {
         yourScore += gem2;
-        $("#displayScore").text(yourScore);
+        editYourScore();
         
     }).on("click", "#purpleImg", function () {
         yourScore += gem3;
-        $("#displayScore").text(yourScore);
+        editYourScore();
         
-    }).on("click", "#pinkImg2", function () {
+    }).on("click", "#blueImg", function () {
         yourScore += gem4;
-        $("#displayScore").text(yourScore);
+        editYourScore();
         
     });
 
