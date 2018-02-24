@@ -98,20 +98,20 @@
         <!-- WIN/LOSE MESSAGE to User -->
         <div class="container">
             <div class="row mt-2 pt-2 justify-content-center dancingScript"> 
-                <div class="col-4  text-center">
-                    <!-- <h1 class="transarantBg p-1 border">You Won!</h1> -->
+                <div class="col-5  text-center">
+                    <h1 id="winLoseMsg"></h1>
                 </div>
             </div> <!--END of Win/Lose Status  -->
 
-            <!-- START... AGAIN BUTTON -->
+            <!--  PLAY AGAIN BUTTON -->
             <audio id="resetButtonClick">
                 <source src="./assets/audio/iceCubes.m4a">
                 Your browser does not support this audio.
             </audio>
 
             <div class="row">
-                <div class="col text-center">
-                    <button class="column againButton btn btn-info mt-2 mb-5" type="reset">
+                <div class="col text-center resetWrapper">
+                    <button class="column againButton btn btn-info mt-2 mb-5" id= type="reset">
                     Play Again
                     </button>
                 </div>
