@@ -2,8 +2,20 @@
 $(document).ready(function () {
 
 // AUDIO
+
+$(".add-attr").click(function(){            
+    $('input[type="checkbox"]').attr("checked", "checked");
+});
+
+var beep = $("crystalButtonClick");
+function playAudio() {
+    beep.play();
+}
+
+
+
     // Sound that plays when you click on a crystal  
-    var crystalAudio = $("#crystalButtonClick")[0];
+    var crystalAudio = $("#crystalButtonClick")[0];  //I don't fully understand why this works... is the [0] grabbing the first attribute of the element containing ID="crystalButtonClick", which is the source?
     $(".crystal").click(function(){
         crystalAudio.play();
     });
@@ -14,7 +26,7 @@ $(document).ready(function () {
         iceAudio.play();
     });
 
-//GAME VARIABLES
+// VARIABLES
     var yourScore = 0;
     var yourWins = 0;
     var yourLosses = 0;
@@ -33,7 +45,8 @@ $(document).ready(function () {
     gem2 = Math.floor(Math.random ()*12)+1;    //TEAL GEM
     gem3 = Math.floor(Math.random ()*12)+1;    //PURPLE GEM
     gem4 = Math.floor(Math.random ()*12)+1;    //BLUE GEM
-    }   
+    }
+
 
     //Reset all targetNumber and all gems to random values
     resetGame ();
@@ -41,19 +54,30 @@ $(document).ready(function () {
 
     console.log("Pink=" + gem1 + "   Teal=" + gem2 + "   Purple=" + gem3 + "   Blue=" + gem4);
     
+    //cache DOM selectors.... 
+    var game = {
+        displayScore: $("#displayScore"),
+        displayGoal: $("#displayGoal"),
+        displayWins: $("#displayWins"),
+        displayLosses: $("#displayLosses"),
+        winLoseMsg: $("#winLoseMsg"),
+        crystalWrapper: $(".crystalWrapper"),
+        resetWrapper: $(".resetWrapper"),
+    }
+
     // ***FUNCTIONS
     // Inserts/Replaces current "Your Score" value (starting at 0) with value assigned by crystal at HTML location of #displayScore
     function editYourScore () {
-        $("#displayScore").text(yourScore);
+        game.displayScore.text(yourScore);
     }
     // Inserts/Replaces current "Your Goal" value at location of #displayGoal
     function editYourGoal () {
-        $("#displayGoal").text(targetNumber);
+        game.displayGoal.text(targetNumber);
     }
     // Inserts/Replaces current "Wins" & "Losses" value at location of #displayWins and #displayLosses respectively
     function editWinsLosses () {
-        $("#displayWins").text(yourWins);
-        $("#displayLosses").text(yourLosses);
+        game.displayWins.text(yourWins);
+        game.displayLosses.text(yourLosses);
     }
 
     // Conditional statement for score changes 
@@ -64,16 +88,16 @@ $(document).ready(function () {
             //change score on screen
             editWinsLosses ();
             //display winning message
-            $("#winLoseMsg").addClass("transarantBg");
-            $("#winLoseMsg").html("<h1>Look at you!! <br>You Won!!!</h1>");
-            $(".crystalWrapper").off("click");
+            game.winLoseMsg.addClass("transarantBg");
+            game.winLoseMsg.html("<h1>Look at you!! <br>You Won!!!</h1>");
+            game.crystalWrapper.off("click");
         } else if (yourScore > targetNumber) {
             yourLosses ++;
             editWinsLosses ();
             //display losing message
-            $("#winLoseMsg").addClass("transarantBg");
-            $("#winLoseMsg").html("<h1>I'm sorry! <br>You lost. </h1>");
-            $(".crystalWrapper").off("click");
+            game.winLoseMsg.addClass("transarantBg");
+            game.winLoseMsg.html("<h1>I'm sorry! <br>You lost. </h1>");
+            game.crystalWrapper.off("click");
         }  
     }
 
@@ -88,7 +112,7 @@ $(document).ready(function () {
 
 //clicking on the crystals 
 function clickingCrystals () {
-$(".crystalWrapper").on("click", "#pinkImg", function(){
+game.crystalWrapper.on("click", "#pinkImg", function(){
         yourScore += gem1;
         editYourScore();
         checkForWinsLosses ();
@@ -109,12 +133,12 @@ $(".crystalWrapper").on("click", "#pinkImg", function(){
 clickingCrystals ();
 
 //clicking on "Play Again" Button
-    $(".resetWrapper").on("click", ".againButton", function(){
+    game.resetWrapper.on("click", ".againButton", function(){
         yourScore = 0;
         resetGame ();
         fillStats ();
-        $("#winLoseMsg").removeClass("transarantBg");
-        $("#winLoseMsg").html("<h1></h1>");
+        game.winLoseMsg.removeClass("transarantBg");
+        game.winLoseMsg.html("<h1></h1>");
         clickingCrystals ();
         console.log("Pink=" + gem1 + "   Teal=" + gem2 + "   Purple=" + gem3 + "   Blue=" + gem4);
     });
