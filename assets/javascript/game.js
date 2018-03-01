@@ -1,4 +1,8 @@
-//FUTURE IMPROVEMENTS - add sound to clicks... I have found a few ways of doing this online, but they don't seem very efficient. When I tried them, the sound wouldn't work everytime. I'm still researching this before I add it. 
+//FUTURE IMPROVEMENTS:
+// * add sound to clicks... I have found a few ways of doing this online, but they don't seem very efficient. When I tried them, the sound wouldn't work everytime. I'm still researching this before I add it. 
+// * Stop css pseudoclasses after a win/loss, so that it looks like buttons can't be clicked until you click "Play Again"
+// * Make a win / loss more obvious. Maybe make the winLoseMsg container div Expand over and in front of the the other elements on the page briefly. 
+// * Develop a way to turn on and turn off "helpers" or "hints" ... As each crystal is clicked, have the value of it fade into focus in front of the crystal and then fade out as it's clicked... 
 
 // "document.ready" makes sure JavaScript doesn't run until HTML doc is finished loading.
 $(document).ready(function () {
@@ -33,7 +37,7 @@ $(document).ready(function () {
     function setRandoms () {
     // "Your Goal". Should be should be between 19 - 120
     targetNumber = Math.floor(Math.random ()*(102)+19);
-    //Random numbers for each crystal. Should be between 1 - 12
+    //Random numbers for each crystal between 1 - 12
     gem1 = generateRandomTo12 ();    //PINK GEM
     gem2 = generateRandomTo12 ();    //TEAL GEM
     gem3 = generateRandomTo12 ();    //PURPLE GEM
