@@ -1,30 +1,7 @@
+//FUTURE IMPROVEMENTS - add sound to clicks... I have found a few ways of doing this online, but they don't seem very efficient. When I tried them, the sound wouldn't work everytime. I'm still researching this before I add it. 
+
 // "document.ready" makes sure JavaScript doesn't run until HTML doc is finished loading.
 $(document).ready(function () {
-
-// AUDIO
-
-$(".add-attr").click(function(){            
-    $('input[type="checkbox"]').attr("checked", "checked");
-});
-
-var beep = $("crystalButtonClick");
-function playAudio() {
-    beep.play();
-}
-
-
-
-    // Sound that plays when you click on a crystal  
-    var crystalAudio = $("#crystalButtonClick")[0];  //I don't fully understand why this works... is the [0] grabbing the first attribute of the element containing ID="crystalButtonClick", which is the source?
-    $(".crystal").click(function(){
-        crystalAudio.play();
-    });
-
-    // Sound that plays when you click on the Play Again Button
-    var iceAudio = $("#resetButtonClick")[0];
-    $(".againButton").click(function(){
-        iceAudio.play();
-    });
 
 // VARIABLES
     var yourScore = 0;
@@ -36,15 +13,19 @@ function playAudio() {
     var gem3 = 0;
     var gem4 = 0;
     
+    function generateRandomTo12 () {
+        return Math.floor(Math.random ()*12)+1;
+    }
     
+
     function resetGame () {
     // The Number that the user is shooting for... A.K.A. "Your Goal". It Should be should be between 19 - 120
     targetNumber = Math.floor(Math.random ()*(102)+19);
     //Random numbers for each crystal. Number should be between 1 - 12
-    gem1 = Math.floor(Math.random ()*12)+1;    //PINK GEM
-    gem2 = Math.floor(Math.random ()*12)+1;    //TEAL GEM
-    gem3 = Math.floor(Math.random ()*12)+1;    //PURPLE GEM
-    gem4 = Math.floor(Math.random ()*12)+1;    //BLUE GEM
+    gem1 = generateRandomTo12 ();    //PINK GEM
+    gem2 = generateRandomTo12 ();    //TEAL GEM
+    gem3 = generateRandomTo12 ();    //PURPLE GEM
+    gem4 = generateRandomTo12 ();    //BLUE GEM
     }
 
 
@@ -54,7 +35,7 @@ function playAudio() {
 
     console.log("Pink=" + gem1 + "   Teal=" + gem2 + "   Purple=" + gem3 + "   Blue=" + gem4);
     
-    //cache DOM selectors.... 
+    //cache DOM selectors....
     var game = {
         displayScore: $("#displayScore"),
         displayGoal: $("#displayGoal"),
