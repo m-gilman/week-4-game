@@ -13,26 +13,28 @@ $(document).ready(function () {
     var gem3 = 0;
     var gem4 = 0;
     
+    //RANDOM NUMBER GENERATORS
     function generateRandomTo12 () {
         return Math.floor(Math.random ()*12)+1;
     }
-    
+    function generateRandom19To120 () {
+        return Math.floor(Math.random ()*(102)+19);
+    }
 
+    //START THE GAME AND RESET WITH NEW RANDOM NUMBERS
     function resetGame () {
-    // The Number that the user is shooting for... A.K.A. "Your Goal". It Should be should be between 19 - 120
-    targetNumber = Math.floor(Math.random ()*(102)+19);
-    //Random numbers for each crystal. Number should be between 1 - 12
+    // "Your Goal". Should be should be between 19 - 120
+    targetNumber = generateRandom19To120 ();
+    //Random numbers for each crystal. Should be between 1 - 12
     gem1 = generateRandomTo12 ();    //PINK GEM
     gem2 = generateRandomTo12 ();    //TEAL GEM
     gem3 = generateRandomTo12 ();    //PURPLE GEM
     gem4 = generateRandomTo12 ();    //BLUE GEM
     }
-
-
-    //Reset all targetNumber and all gems to random values
+    //START -Reset all targetNumber and all gems to random values
     resetGame ();
 
-
+    //Because all games should have a way to cheat...
     console.log("Pink=" + gem1 + "   Teal=" + gem2 + "   Purple=" + gem3 + "   Blue=" + gem4);
     
     //cache DOM selectors....
